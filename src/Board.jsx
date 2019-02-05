@@ -1,29 +1,48 @@
 import React, { Component } from 'react';
 import Cases from './Cases';
+import './Board.css';
 import './App.css';
 export default class Board extends Component {
+    //onClick={()=> this.setState({etat : this.player})
+    constructor(props){
+        super(props);
+        this.state = {
+            grid: Array(9).fill(null),
+            player: 'X',
+        };
+    }
+    handleClick(index) {
+        const grid = [...this.state.grid];
+        grid[index] = this.state.player;
+        this.setState({ grid });
+        if (this.state.player == 'X'){
+            this.setState({player:'O'})
+        }else{
+            this.setState({player:'X'})
+        }
+    }
+    renderCases(index) {
+        return <Cases etat={this.state.grid[index]} onClick={()=>this.handleClick(index)}/>;
+    }
     render() {
-        return <div>
-            <table border="1">
-                <tbody>
-                    <tr>
-                        <td><Cases etat={0}/></td>
-                        <td><Cases etat={1}/></td>
-                        <td><Cases etat={2}/></td>
-                    </tr>
-                    <tr>
-                        <td><Cases etat={3}/></td>
-                        <td><Cases etat={4}/></td>
-                        <td><Cases etat={5}/></td>
-                    </tr>
-                    <tr>
-                        <td><Cases etat={6}/></td>
-                        <td><Cases etat={7}/></td>
-                        <td><Cases etat={8}/></td>
-                    </tr>
-                </tbody>
-
-        </table>
-        </div>;
+        const status = 'Next player: '+this.state.player;
+        return (<div>
+            <div className="status">{status}</div>
+            <div className="board-row">
+                {this.renderCases(0)}
+                {this.renderCases(1)}
+                {this.renderCases(2)}
+            </div>
+            <div className="board-row">
+                {this.renderCases(3)}
+                {this.renderCases(4)}
+                {this.renderCases(5)}
+            </div>
+            <div className="board-row">
+                {this.renderCases(6)}
+                {this.renderCases(7)}
+                {this.renderCases(8)}
+            </div>
+        </div>);
     }
 }
