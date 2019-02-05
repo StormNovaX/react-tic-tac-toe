@@ -7,19 +7,19 @@ export default class Board extends Component {
             <table border="1">
                 <tbody>
                     <tr>
-                        <td><Cases/></td>
-                        <td><Cases/></td>
-                        <td><Cases/></td>
+                        <td><Cases etat={0}/></td>
+                        <td><Cases etat={1}/></td>
+                        <td><Cases etat={2}/></td>
                     </tr>
                     <tr>
-                        <td><Cases/></td>
-                        <td><Cases/></td>
-                        <td><Cases/></td>
+                        <td><Cases etat={3}/></td>
+                        <td><Cases etat={4}/></td>
+                        <td><Cases etat={5}/></td>
                     </tr>
                     <tr>
-                        <td><Cases/></td>
-                        <td><Cases/></td>
-                        <td><Cases/></td>
+                        <td><Cases etat={6}/></td>
+                        <td><Cases etat={7}/></td>
+                        <td><Cases etat={8}/></td>
                     </tr>
                 </tbody>
 
